@@ -117,8 +117,21 @@ function filtrarAuto() {
     .filter(filtrarTransmision)
     .filter(filtrarColor);
 
-  console.log(resultado);
-  mostrarAutos(resultado);
+  if (resultado.length) {
+    mostrarAutos(resultado);
+  } else {
+    noResultado();
+  }
+}
+
+function noResultado() {
+  limpiarHTML();
+
+  const noResultado = document.createElement("DIV");
+  noResultado.classList.add("alerta", "error");
+  noResultado.textContent =
+    "No hay resultados, intenta con otros términos de búsqueda";
+  resultado.appendChild(noResultado);
 }
 
 function filtrarMarca(auto) {
